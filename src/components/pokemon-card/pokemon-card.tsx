@@ -56,6 +56,49 @@ export default function PokemonCard(){
         <ol id="pokemon-list">
             <li className="pokemon-card">
                 <section className="top-section">
+                    <p className="pokemon-name">Bulbasaur</p>
+                    <p className="pokemon-number">#1</p>
+                </section>
+                <section className="mid-section">
+                    <img className="pokemon-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" alt="Pokemon-img" />
+                </section>
+                <section className="bot-section">
+                    <ol className="pokemon-types">
+                        <li className="type">Grass</li>
+                        <li className="type">Poison</li>
+                    </ol>
+                </section>
+            </li>
+            <li className="pokemon-card">
+                <section className="top-section">
+                    <p className="pokemon-name">Charmander</p>
+                    <p className="pokemon-number">#4</p>
+                </section>
+                <section className="mid-section">
+                    <img className="pokemon-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/4.svg" alt="Pokemon-img" />
+                </section>
+                <section className="bot-section">
+                    <ol className="pokemon-types">
+                        <li className="type">fire</li>
+                    </ol>
+                </section>
+            </li>
+            <li className="pokemon-card">
+                <section className="top-section">
+                    <p className="pokemon-name">Charmander</p>
+                    <p className="pokemon-number">#4</p>
+                </section>
+                <section className="mid-section">
+                    <img className="pokemon-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/4.svg" alt="Pokemon-img" />
+                </section>
+                <section className="bot-section">
+                    <ol className="pokemon-types">
+                        <li className="type">fire</li>
+                    </ol>
+                </section>
+            </li>
+            <li className="pokemon-card">
+                <section className="top-section">
                     <p className="pokemon-name">Charmander</p>
                     <p className="pokemon-number">#4</p>
                 </section>

@@ -1,0 +1,42 @@
+
+#pokemon-list{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    user-select: none;
+}
+
+.pokemon-card{
+    margin: 0.5rem;
+    padding: 20px;
+    height: 14rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: lightblue;
+}
+
+.top-section{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.pokemon-img{
+    height: 7rem;
+    width: 7.4rem;
+}
+
+.bot-section{
+    width: 100%;
+}
+
+.pokemon-types{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.type{
+    margin: 0 auto;
+}
