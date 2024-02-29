@@ -1,4 +1,7 @@
 import "./style.css"
+import "./pokeTypes.css"
+import img from "../../../public/info.svg"
+import Image from "next/image"
 
 export default function PokemonCard(){
     const pokemonDetail = {
@@ -54,22 +57,23 @@ export default function PokemonCard(){
 
     return(
         <ol id="pokemon-list">
-            <li className="pokemon-card">
+            <li className="pokemon-card grass">
                 <section className="top-section">
                     <p className="pokemon-name">Bulbasaur</p>
                     <p className="pokemon-number">#1</p>
                 </section>
                 <section className="mid-section">
                     <img className="pokemon-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" alt="Pokemon-img" />
+                    <Image className="infoIcon" src={img} alt={"details button"} ></Image>
                 </section>
                 <section className="bot-section">
                     <ol className="pokemon-types">
-                        <li className="type">Grass</li>
-                        <li className="type">Poison</li>
+                        <li className="type grass">Grass</li>
+                        <li className="type poison">Poison</li>
                     </ol>
                 </section>
             </li>
-            <li className="pokemon-card">
+            <li className="pokemon-card fire">
                 <section className="top-section">
                     <p className="pokemon-name">Charmander</p>
                     <p className="pokemon-number">#4</p>
@@ -79,11 +83,11 @@ export default function PokemonCard(){
                 </section>
                 <section className="bot-section">
                     <ol className="pokemon-types">
-                        <li className="type">fire</li>
+                        <li className="type fire">fire</li>
                     </ol>
                 </section>
             </li>
-            <li className="pokemon-card">
+            <li className="pokemon-card fire">
                 <section className="top-section">
                     <p className="pokemon-name">Charmander</p>
                     <p className="pokemon-number">#4</p>
@@ -93,7 +97,7 @@ export default function PokemonCard(){
                 </section>
                 <section className="bot-section">
                     <ol className="pokemon-types">
-                        <li className="type">fire</li>
+                        <li className="type fire">fire</li>
                     </ol>
                 </section>
             </li>
