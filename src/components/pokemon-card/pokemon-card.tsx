@@ -2,28 +2,33 @@ import "./style.css"
 import "./pokeTypes.css"
 import img from "../../../public/info.svg"
 import Image from "next/image"
+import React, { useEffect, useState } from "react";
+
 
 export default function PokemonCard(){
-    const pokemonDetail = {
-        name: "",
-        id:0,
-        sprite: "",
-        types: [],
-        mainType:""
+
+    class Pokemon{
+        name: string = "";
+        id: number = 0;
+        sprite: string = "";
+        types: string[] = [];
+        mainType: string = "";
     }
 
-    const limit:number = 8
-    let offset:number = 0
-    //let list = document.getElementById("pokemon-list")
+    const url = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=8"
+    const [list, setList] = useState(Array<any>)
+    const [next, setNext] = useState("")
+    const [previous, setPrevious] = useState("")
 
     function savePokemonDetails(details:any){
-        pokemonDetail.name = details.name
-        pokemonDetail.id = details.id
-        pokemonDetail.sprite = details.sprites.other.dream_world.front_default
-        pokemonDetail.types = details.types.map((types:any) => types.type.name)
-        pokemonDetail.mainType = pokemonDetail.types[0]
+        const pokemon:Pokemon = new Pokemon()
+        pokemon.name = details.name
+        pokemon.id = details.id
+        pokemon.sprite = details.sprites.other.dream_world.front_default
+        pokemon.types = details.types.map((types:any) => types.type.name)
+        pokemon.mainType = pokemon.types[0]
 
-        return pokemonDetail
+        return pokemon
     }
 
     async function GetPokemonDetails(pokemon:any){
@@ -33,88 +38,70 @@ export default function PokemonCard(){
             .catch(error => alert(error))
     }
 
-    async function GetPokemons(){
-        const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`
-
+    async function GetPokemons(url: string){
         return await fetch(url)
             .then(response => response.json())
-            .then(data => data.results)
+            .then(data => {
+                setNext(data.next)
+                setPrevious(data.previous)
+                return data.results
+            })
             .then(pokemons => pokemons.map(GetPokemonDetails))
             .then(detailRequest => Promise.all(detailRequest))
             .then(pokemonDetails => pokemonDetails)
-            .catch(error => alert(error))
+            .catch(error => console.log(error))
     }
 
-    function convertPokemonToLi(){
-        return ``
+    function ConvertPokemonToLi(pokemon: any){
+        return(
+            <li key={pokemon.id} className={"pokemon-card " + pokemon.mainType}>
+                <section className="top-section">
+                    <p className="pokemon-name">{pokemon.name}</p>
+                    <p className="pokemon-number">#{pokemon.id}</p>
+                </section>
+                <section className="mid-section">
+                    <img className="pokemon-img" src={pokemon.sprite} alt="Pokemon-img" />
+                    <Image className="infoIcon" src={img} alt="details button"></Image>
+                </section>
+                <section className="bot-section">
+                    <ol className="pokemon-types">
+                        {pokemon.types.map((type: string) => <li className={"type " + type}>{type}</li>)}
+                    </ol>
+                </section>
+            </li>
+        )
     }
 
-    function LoadMorePokemons(){
-        GetPokemons().then((pokemons: any) => {
-            //list.innerHTML = pokemons.map(convertPokemonToLi).join("")
+    useEffect(() => {
+        Load(url)
+    }, [])
+    
+    async function Load(url: string){
+        await GetPokemons(url).then((pokemons: any) => {
+            let li = pokemons.map(ConvertPokemonToLi)
+            let aux = []
+            aux.push(li)
+            setList(aux)
         })
     }
 
     return(
-        <ol id="pokemon-list">
-            <li className="pokemon-card grass">
-                <section className="top-section">
-                    <p className="pokemon-name">Bulbasaur</p>
-                    <p className="pokemon-number">#1</p>
-                </section>
-                <section className="mid-section">
-                    <img className="pokemon-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" alt="Pokemon-img" />
-                    <Image className="infoIcon" src={img} alt={"details button"} ></Image>
-                </section>
-                <section className="bot-section">
-                    <ol className="pokemon-types">
-                        <li className="type grass">Grass</li>
-                        <li className="type poison">Poison</li>
-                    </ol>
-                </section>
-            </li>
-            <li className="pokemon-card fire">
-                <section className="top-section">
-                    <p className="pokemon-name">Charmander</p>
-                    <p className="pokemon-number">#4</p>
-                </section>
-                <section className="mid-section">
-                    <img className="pokemon-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/4.svg" alt="Pokemon-img" />
-                </section>
-                <section className="bot-section">
-                    <ol className="pokemon-types">
-                        <li className="type fire">fire</li>
-                    </ol>
-                </section>
-            </li>
-            <li className="pokemon-card fire">
-                <section className="top-section">
-                    <p className="pokemon-name">Charmander</p>
-                    <p className="pokemon-number">#4</p>
-                </section>
-                <section className="mid-section">
-                    <img className="pokemon-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/4.svg" alt="Pokemon-img" />
-                </section>
-                <section className="bot-section">
-                    <ol className="pokemon-types">
-                        <li className="type fire">fire</li>
-                    </ol>
-                </section>
-            </li>
-            <li className="pokemon-card">
-                <section className="top-section">
-                    <p className="pokemon-name">Charmander</p>
-                    <p className="pokemon-number">#4</p>
-                </section>
-                <section className="mid-section">
-                    <img className="pokemon-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/4.svg" alt="Pokemon-img" />
-                </section>
-                <section className="bot-section">
-                    <ol className="pokemon-types">
-                        <li className="type">fire</li>
-                    </ol>
-                </section>
-            </li>
-        </ol>
+        <>
+            <button onClick={() => {
+                previous?Load(previous): alert("Fim!")
+            }}>
+                Previous
+            </button>
+
+            <button onClick={() => {
+                next?Load(next): alert("Fim!")
+            }}>
+                Next
+            </button>
+
+            <ol id="pokemon-list">
+                {list.map(items => items)}
+            </ol>
+        </>
     )
 }
