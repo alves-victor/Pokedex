@@ -4,8 +4,7 @@ import img from "../../../public/info.svg"
 import Image from "next/image"
 import React, { useEffect, useState } from "react";
 
-
-export default function PokemonCard(){
+export default function PokemonCard(props: any){
 
     class Pokemon{
         name: string = "";
@@ -19,6 +18,7 @@ export default function PokemonCard(){
     const [list, setList] = useState(Array<any>)
     const [next, setNext] = useState("")
     const [previous, setPrevious] = useState("")
+    let count = 1500
 
     function savePokemonDetails(details:any){
         const pokemon:Pokemon = new Pokemon()
@@ -61,11 +61,11 @@ export default function PokemonCard(){
                 </section>
                 <section className="mid-section">
                     <img className="pokemon-img" src={pokemon.sprite} alt="Pokemon-img" />
-                    <Image className="infoIcon" src={img} alt="details button"></Image>
+                    <Image onClick={() => props.ShowModal(pokemon.id)} className="infoIcon" src={img} alt="details button"></Image>
                 </section>
                 <section className="bot-section">
                     <ol className="pokemon-types">
-                        {pokemon.types.map((type: string) => <li className={"type " + type}>{type}</li>)}
+                        {pokemon.types.map((type: string) => <li key={count++} className={"type " + type}>{type}</li>)}
                     </ol>
                 </section>
             </li>
@@ -79,9 +79,7 @@ export default function PokemonCard(){
     async function Load(url: string){
         await GetPokemons(url).then((pokemons: any) => {
             let li = pokemons.map(ConvertPokemonToLi)
-            let aux = []
-            aux.push(li)
-            setList(aux)
+            setList(li)
         })
     }
 
@@ -100,7 +98,7 @@ export default function PokemonCard(){
             </button>
 
             <ol id="pokemon-list">
-                {list.map(items => items)}
+                {list.map(pokemon => pokemon)}
             </ol>
         </>
     )
