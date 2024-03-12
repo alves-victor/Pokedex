@@ -61,7 +61,7 @@ export default function PokemonCard(props: any){
                 </section>
                 <section className="mid-section">
                     <img className="pokemon-img" src={pokemon.sprite} alt="Pokemon-img" />
-                    <Image onClick={() => props.ShowModal(pokemon.id)} className="infoIcon" src={img} alt="details button"></Image>
+                    <Image onClick={() => props.ShowModal(pokemon.id, "visible")} className="infoIcon" src={img} alt="details button"></Image>
                 </section>
                 <section className="bot-section">
                     <ol className="pokemon-types">
