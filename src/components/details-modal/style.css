@@ -1,10 +1,16 @@
+html, body{
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 .modal{
-    position: sticky;
+    position: absolute;
     top: 0;
     right: 0;
     left: 0;
     bottom: 0;
     min-height: 100vh;
+    width: 100vw;
     background-color: rgba(0, 0, 0, 0.4);
     color: #ffffff;
     z-index: 999;
@@ -21,7 +27,7 @@
 }
 
 .modal-main{
-    width: 100vw;
+    width: 100%;
     display: flex;
     background-color: #555;
     flex-direction: column;
@@ -30,6 +36,7 @@
 
 .modal-section{
     margin-top: 20px;
+    margin-bottom: 10px;
     width: 80%;
     display: flex;
     flex-direction: column;
@@ -38,6 +45,7 @@
     border-radius: 20px;
     background-color: #222;
     box-shadow: 8px 8px 1px 5px #77c850;
+    text-transform: capitalize;
 }
 
 .close-btn{
@@ -61,10 +69,54 @@
 }
 
 .name-section{
-    width: 100%;
     padding: 10px;
-    text-transform: capitalize;
     display: flex;
     justify-content: space-around;
     font-size: 1.5rem;
+}
+
+.section-padding{
+    padding: 15px 15px;
+    width: 100%;
+}
+
+.type-section{
+    position: relative;
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.type-section > ul > li{
+    font-weight: 600;
+}
+
+.item{
+    margin-top: 10px;
+}
+
+.item::after{
+    position: absolute;
+    content: "";
+    background: #aaa;
+    bottom: 0;
+    height: 2px;
+    width: 70%;
+    display: flex;
+    align-self: center;
+}
+
+.item:last-child::after{
+    display: none;
+}
+
+.details{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+}
+
+.details > p{
+    font-size: 1.1rem;
 }
