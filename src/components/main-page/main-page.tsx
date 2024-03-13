@@ -2,7 +2,6 @@
 import { useState } from "react"
 import PokemonCard from "../pokemon-card/pokemon-card"
 import DetailsModal from "../details-modal/details-modal"
-import { relative } from "path"
 
 export default function MainPage(){
     const [pokeId, setPokeId] = useState(0)
