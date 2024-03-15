@@ -18,24 +18,41 @@ export default function DetailsModal(props: any){
                 </section>
 
                 <section className="modal-section">
-                    <p className="item">types</p>
+
+                    <section className="description-section section-padding item">
+                        <p className="title">Description</p>
+                        <span className="description">{`For some time after its birth, it\ngrows by gaining nourishment from\nthe seed on its back.`}</span>
+                    </section>
+
                     <section className="type-section section-padding item">
+                        <p className="title">types</p>
                         <ol className="pokemon-types">
                             <li className="type grass">grass</li>
                             <li className="type poison">poison</li>
                         </ol>
                     </section>
 
-                    <p className="item">abilities</p>
-                    <ul className="abilities item">
-                        <li>overgrow</li>
-                        <li>chlorophyll</li>
+                    <ul className="abilities section-padding item">
+                        <p className="title">abilities</p>
+                        <li className="ability">
+                            <p>overgrow:</p>
+                            <span>Strengthens grass moves to inflict 1.5x damage at 1/3 max HP or less.</span>
+                        </li>
+                        <li className="ability">
+                            <p>chlorophyll:</p>
+                            <span>Doubles Speed during strong sunlight.</span>
+                        </li>
                     </ul>
                     
-                    <p className="item">details</p>
-                    <section className="details section-padding item">
-                        <span>heigth: 70cm</span>
-                        <span>weigth: 69cm</span>
+                    <p className="title">stats</p>
+                    <section className="stats section-padding item">
+                        <span>heigth: {7 / 10}m</span>
+                        <span>weigth: {60 / 10}kg</span>
+                        <span>attack: 49</span>
+                        <span>defense: 49</span>
+                        <span>SP attack: 65</span>
+                        <span>SP defense: 65</span>
+                        <span>speed: 45</span>
                     </section>
 
                 </section>

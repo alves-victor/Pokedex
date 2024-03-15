@@ -10,8 +10,8 @@ html, body{
     left: 0;
     bottom: 0;
     min-height: 100vh;
+    max-height: max-content; /*retirar para responsividade*/
     width: 100vw;
-    background-color: rgba(0, 0, 0, 0.4);
     color: #ffffff;
     z-index: 999;
     display: none;
@@ -29,14 +29,16 @@ html, body{
 .modal-main{
     width: 100%;
     display: flex;
+    min-height: 100vh;
+    max-height: max-content;
     background-color: #555;
     flex-direction: column;
     align-items: center;
+    padding-top: 20px;
 }
 
 .modal-section{
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 40px;
     width: 80%;
     display: flex;
     flex-direction: column;
@@ -45,7 +47,6 @@ html, body{
     border-radius: 20px;
     background-color: #222;
     box-shadow: 8px 8px 1px 5px #77c850;
-    text-transform: capitalize;
 }
 
 .close-btn{
@@ -80,20 +81,32 @@ html, body{
     width: 100%;
 }
 
-.type-section{
+.description-section{
     position: relative;
-    height: 5rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+}
+
+.description{
+    padding: 10px 10px 0 10px;
+}
+
+.type-section{
+    position: relative;
+    height: 7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .type-section > ul > li{
     font-weight: 600;
 }
 
-.item{
-    margin-top: 10px;
+.title{
+    font-size: 1.2rem;
+    text-align: center;
+    text-transform: capitalize;
 }
 
 .item::after{
@@ -111,12 +124,32 @@ html, body{
     display: none;
 }
 
-.details{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    text-align: center;
+.abilities{
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
-.details > p{
+.ability > p{
+    text-decoration: underline;
     font-size: 1.1rem;
+    padding: 10px 0px;
+    text-transform: capitalize;
+}
+
+.stats{
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+}
+
+.stats > p{
+    font-size: 1.1rem;
+}
+
+.stats > span{
+    padding: 10px 0px;
 }
