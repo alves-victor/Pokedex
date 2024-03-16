@@ -4,15 +4,19 @@ import img from "../../../public/info.svg"
 import Image from "next/image"
 import React, { useEffect, useState } from "react";
 
-export default function PokemonCard(props: any){
+export class Pokemon{
+    name: string = "";
+    id: number = 0;
+    sprite: string = "";
+    types: string[] = [];
+    mainType: string = "";
+    abilityName: string[] = [];
+    abililtyDescription: string[] = [];
+    pokemonDescription: string = "";
+    stats: any[] = []
+}
 
-    class Pokemon{
-        name: string = "";
-        id: number = 0;
-        sprite: string = "";
-        types: string[] = [];
-        mainType: string = "";
-    }
+export default function PokemonCard(props: any){
 
     const url = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=8"
     const [list, setList] = useState(Array<any>)
