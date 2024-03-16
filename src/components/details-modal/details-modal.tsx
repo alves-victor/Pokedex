@@ -10,10 +10,10 @@ export default function DetailsModal(props: any){
             <main className="modal-main">
                 <section className="modal-section">
                     <Image className="close-btn" onClick={() => props.invisible("invisible")} src={close} alt="close button"></Image>
-                    <img className="poke-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="a" />
+                    <img className="poke-img" src={props.pokemonInfo.sprite} alt="pokemon picture" />
                     <section className="name-section section-padding">
-                        <span>bulbassaur</span>
-                        <span>#1</span>
+                        <span>{props.pokemonInfo.name}</span>
+                        <span>#{props.pokemonInfo.id}</span>
                     </section>
                 </section>
 
@@ -21,40 +21,57 @@ export default function DetailsModal(props: any){
 
                     <section className="description-section section-padding item">
                         <p className="title">Description</p>
-                        <span className="description">{`For some time after its birth, it\ngrows by gaining nourishment from\nthe seed on its back.`}</span>
+                        <span className="description">{`${props.pokemonInfo.pokemonDescription}`}</span>
                     </section>
 
                     <section className="type-section section-padding item">
                         <p className="title">types</p>
                         <ol className="pokemon-types">
-                            <li className="type grass">grass</li>
-                            <li className="type poison">poison</li>
+                            {props.pokemonInfo.types.map((type: string, i: number = 0) => {
+                                let element = <li key={"tm" + i} className={"type " + type}>{type}</li>
+                                i++
+                                return element
+                            })}
                         </ol>
                     </section>
 
-                    <ul className="abilities section-padding item">
+                    <ol className="abilities section-padding item">
                         <p className="title">abilities</p>
-                        <li className="ability">
-                            <p>overgrow:</p>
-                            <span>Strengthens grass moves to inflict 1.5x damage at 1/3 max HP or less.</span>
-                        </li>
-                        <li className="ability">
-                            <p>chlorophyll:</p>
-                            <span>Doubles Speed during strong sunlight.</span>
-                        </li>
-                    </ul>
+                        {props.pokemonInfo.abilityName.map((ability: string, i: number = 0) => {
+                            let element = <li className="ability" key={"am" + i}><p>{ability}:</p> <span>{props.pokemonInfo.abililtyDescription[i]}</span></li>
+                            i++
+                            return element
+                        })}                        
+                    </ol>
                     
                     <p className="title">stats</p>
-                    <section className="stats section-padding item">
-                        <span>heigth: {7 / 10}m</span>
-                        <span>weigth: {60 / 10}kg</span>
-                        <span>attack: 49</span>
-                        <span>defense: 49</span>
-                        <span>SP attack: 65</span>
-                        <span>SP defense: 65</span>
-                        <span>speed: 45</span>
-                    </section>
-
+                    <ol className="stats section-padding item">
+                        {props.pokemonInfo.stats.map((stat: any, i: number = 0) => {
+                            let element
+                            switch (stat.name) {
+                                case "height":
+                                    element = <li className="stat" key={"sm" + i}>{`${stat.name}: ${stat.value / 10}m`}</li>
+                                    i++
+                                    return element
+                                case "weight":
+                                    element = <li className="stat" key={"sm" + i}>{`${stat.name}: ${stat.value / 10}kg`}</li>
+                                    i++
+                                    return element
+                                case "special-attack":
+                                    element = <li className="stat" key={"sm" + i}>{`SP Attack: ${stat.value}`}</li>
+                                    i++
+                                    return element
+                                case "special-defense":
+                                    element = <li className="stat" key={"sm" + i}>{`SP Defense: ${stat.value}`}</li>
+                                    i++
+                                    return element
+                                default:
+                                    element = <li className="stat" key={"sm" + i}>{`${stat.name}: ${stat.value}`}</li>
+                                    i++
+                                    return element
+                            }
+                        })}
+                    </ol>
                 </section>
                 
             </main>
