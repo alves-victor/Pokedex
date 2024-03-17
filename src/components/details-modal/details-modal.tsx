@@ -3,21 +3,21 @@ import Image from "next/image"
 import close from "../../../public/close.svg"
 
 export default function DetailsModal(props: any){
-
+    let count = 0
 
     return(
         <div className={"modal " + props.class}>
             <main className="modal-main">
-                <section className="modal-section">
-                    <Image className="close-btn" onClick={() => props.invisible("invisible")} src={close} alt="close button"></Image>
-                    <img className="poke-img" src={props.pokemonInfo.sprite} alt="pokemon picture" />
+                <section className={"modal-section " + props.pokemonInfo.types[0] + "-box-shadow"}>
+                    <Image className={"close-btn " + props.pokemonInfo.types[0]} onClick={() => props.invisible("invisible")} src={close} alt="close button"></Image>
+                    <img className={"poke-img " + props.pokemonInfo.types[0] + "-filter"} src={props.pokemonInfo.sprite} alt="pokemon picture" />
                     <section className="name-section section-padding">
                         <span>{props.pokemonInfo.name}</span>
                         <span>#{props.pokemonInfo.id}</span>
                     </section>
                 </section>
 
-                <section className="modal-section">
+                <section className={"modal-section " + props.pokemonInfo.types[0] + "-box-shadow"}>
 
                     <section className="description-section section-padding item">
                         <p className="title">Description</p>
@@ -46,17 +46,13 @@ export default function DetailsModal(props: any){
                     
                     <p className="title">stats</p>
                     <ol className="stats section-padding item">
+                        <li className="stat" key={"sm" + count++}>height: {
+                            props.pokemonInfo.height < 10 ? props.pokemonInfo.height + "0cm" : props.pokemonInfo.height / 10 + "m"
+                        }</li>
+                        <li className="stat" key={"sm" + count++}>weight: {props.pokemonInfo.weight / 10} kg</li>
                         {props.pokemonInfo.stats.map((stat: any, i: number = 0) => {
                             let element
                             switch (stat.name) {
-                                case "height":
-                                    element = <li className="stat" key={"sm" + i}>{`${stat.name}: ${stat.value / 10}m`}</li>
-                                    i++
-                                    return element
-                                case "weight":
-                                    element = <li className="stat" key={"sm" + i}>{`${stat.name}: ${stat.value / 10}kg`}</li>
-                                    i++
-                                    return element
                                 case "special-attack":
                                     element = <li className="stat" key={"sm" + i}>{`SP Attack: ${stat.value}`}</li>
                                     i++
