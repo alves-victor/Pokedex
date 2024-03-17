@@ -26,7 +26,8 @@ export default function MainPage(){
                 pokemon.abililtyDescription = data.abilities.map((abilities: any) => GetAblitiesDescription(abilities.ability.url))
                 await GetPokemonDescription(data.species.url, pokemon)
                 pokemon.stats = GetStats(data.stats)
-
+                pokemon.height = data.height
+                pokemon.weight = data.weight
             })
             .catch(error => alert(error))
         setPokemonInfo(pokemon)
@@ -67,7 +68,7 @@ export default function MainPage(){
 
     return(
         <div style={{position: "relative"}}>
-            <h1>Pokédex</h1>
+            <h1 style={{padding: "0px 20px"}}>Pokédex</h1>
             <PokemonCard ShowModal={ShowModal}/>
             <DetailsModal class={modalVisibility} invisible={setVisibility} pokemonInfo={pokemonInfo}/>
         </div>
