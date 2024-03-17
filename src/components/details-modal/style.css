@@ -45,7 +45,6 @@ html, body{
     justify-content: center;
     border-radius: 20px;
     background-color: #222;
-    box-shadow: 8px 8px 1px 5px #77c850;
 }
 
 .close-btn{
@@ -55,7 +54,6 @@ html, body{
     position: absolute;
     top: 30px;
     right: 50px;
-    background-color: #77c850;
 }
 
 .close-btn:hover{
@@ -65,7 +63,6 @@ html, body{
 .poke-img{
     width: 12.5rem;
     height: 13rem;
-    filter: drop-shadow(10px 5px 1px #77c850);
     margin-top: 10px;
 }
 
