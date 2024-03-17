@@ -3,17 +3,10 @@ html, body{
     overflow-x: hidden;
 }
 
-.modal{
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    max-height: max-content; /*retirar para responsividade*/
+.container{
+    max-height: max-content;
     width: 100vw;
     color: #ffffff;
-    z-index: 999;
-    display: none;
 }
 
 .visible{
@@ -25,7 +18,7 @@ html, body{
     display: none;
 }
 
-.modal-main{
+.main{
     width: 100%;
     display: flex;
     min-height: 100vh;
@@ -34,9 +27,10 @@ html, body{
     flex-direction: column;
     align-items: center;
     padding-top: 20px;
+    position: relative;
 }
 
-.modal-section{
+.section{
     margin-bottom: 40px;
     width: 80%;
     display: flex;
@@ -47,21 +41,22 @@ html, body{
     background-color: #222;
 }
 
-.close-btn{
+.back-btn{
+    position: absolute;
     height: 2.5rem;
     width: 2.5rem;
-    border-radius: 20px;
-    position: absolute;
+    border-radius: 50px;
     top: 30px;
-    right: 50px;
+    left: 50px;
 }
 
-.close-btn:hover{
+.back-btn:hover{
     cursor: pointer;
+    filter: brightness(0.9);
 }
 
 .poke-img{
-    width: 12.5rem;
+    width: 13rem;
     height: 13rem;
     margin-top: 10px;
 }

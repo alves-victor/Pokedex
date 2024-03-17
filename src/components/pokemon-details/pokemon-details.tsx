@@ -1,15 +1,18 @@
 import "./style.css"
 import Image from "next/image"
-import close from "../../../public/close.svg"
+import arrow_back from "../../../public/arrow_back.svg"
+import Link from "next/link"
 
-export default function DetailsModal(props: any){
+export default function PokemonDetails(props: any){
     let count = 0
 
     return(
-        <div className={"modal " + props.class}>
-            <main className="modal-main">
-                <section className={"modal-section " + props.pokemonInfo.types[0] + "-box-shadow"}>
-                    <Image className={"close-btn " + props.pokemonInfo.types[0]} onClick={() => props.invisible("invisible")} src={close} alt="close button"></Image>
+        <div className="container">
+            <main className="main">
+                <section className={"section " + props.pokemonInfo.types[0] + "-box-shadow"}>
+                    <Link href="/">
+                        <Image className={"back-btn " + props.pokemonInfo.types[0]} src={arrow_back} alt="back button"></Image>
+                    </Link>
                     <img className={"poke-img " + props.pokemonInfo.types[0] + "-filter"} src={props.pokemonInfo.sprite} alt="pokemon picture" />
                     <section className="name-section section-padding">
                         <span>{props.pokemonInfo.name}</span>
@@ -17,7 +20,7 @@ export default function DetailsModal(props: any){
                     </section>
                 </section>
 
-                <section className={"modal-section " + props.pokemonInfo.types[0] + "-box-shadow"}>
+                <section className={"section " + props.pokemonInfo.types[0] + "-box-shadow"}>
 
                     <section className="description-section section-padding item">
                         <p className="title">Description</p>
