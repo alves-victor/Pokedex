@@ -1,5 +1,5 @@
 import "./style.css"
-import "./pokeTypes.css"
+import "../../app/pokeTypes.css"
 import img from "../../../public/info.svg"
 import Image from "next/image"
 import React, { useEffect, useState } from "react";
@@ -13,7 +13,9 @@ export class Pokemon{
     abilityName: string[] = [];
     abililtyDescription: string[] = [];
     pokemonDescription: string = "";
-    stats: any[] = []
+    stats: any[] = [];
+    height: number = 0;
+    weight: number = 0
 }
 
 export default function PokemonCard(props: any){
