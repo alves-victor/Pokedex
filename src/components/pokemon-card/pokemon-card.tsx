@@ -1,8 +1,11 @@
+"use client"
+
 import "./style.css"
 import "../../app/pokeTypes.css"
 import img from "../../../public/info.svg"
 import Image from "next/image"
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 
 export class Pokemon{
     name: string = "";
@@ -18,7 +21,7 @@ export class Pokemon{
     weight: number = 0
 }
 
-export default function PokemonCard(props: any){
+export default function PokemonCard(){
 
     const url = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=8"
     const [list, setList] = useState(Array<any>)
@@ -67,7 +70,14 @@ export default function PokemonCard(props: any){
                 </section>
                 <section className="mid-section">
                     <img className="pokemon-img" src={pokemon.sprite} alt="Pokemon-img" />
-                    <Image onClick={() => props.ShowModal(pokemon.id, "visible")} className="infoIcon" src={img} alt="details button"></Image>
+                    <Link 
+                        href={{
+                            pathname: "/details",
+                            query: {id: pokemon.id}                     
+                        }}
+                    >
+                        <Image className="infoIcon" src={img} alt="details button"></Image>
+                    </Link>
                 </section>
                 <section className="bot-section">
                     <ol className="pokemon-types">
@@ -79,18 +89,28 @@ export default function PokemonCard(props: any){
     }
 
     useEffect(() => {
-        Load(url)
+        if(localStorage.getItem("url-atual")){
+            Load(localStorage.getItem("url-atual"))
+        }else{
+            Load(url)
+        }
     }, [])
     
-    async function Load(url: string){
+    async function Load(url: any){
+        localStorage.setItem("url-atual", url)
         await GetPokemons(url).then((pokemons: any) => {
             let li = pokemons.map(ConvertPokemonToLi)
             setList(li)
         })
     }
 
+    window.onbeforeunload = function(){
+        localStorage.clear()
+    }
+
     return(
         <>
+            <h1 onClick={() => Load(url)} style={{padding: "0px 20px"}}>Pokédex</h1>
             <button onClick={() => {
                 previous?Load(previous): alert("Fim!")
             }}>
