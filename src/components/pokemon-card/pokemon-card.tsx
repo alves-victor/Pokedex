@@ -2,7 +2,8 @@
 
 import "./style.css"
 import "../../app/pokeTypes.css"
-import img from "../../../public/info.svg"
+import info from "../../../public/info.svg"
+import arrow_back from "../../../public/arrow_back.svg"
 import Image from "next/image"
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
@@ -76,7 +77,7 @@ export default function PokemonCard(){
                             query: {id: pokemon.id}                     
                         }}
                     >
-                        <Image className="infoIcon" src={img} alt="details button"></Image>
+                        <Image className="infoIcon" src={info} alt="details button"></Image>
                     </Link>
                 </section>
                 <section className="bot-section">
@@ -110,22 +111,25 @@ export default function PokemonCard(){
 
     return(
         <>
-            <h1 onClick={() => Load(url)} style={{padding: "0px 20px"}}>Pokédex</h1>
-            <button onClick={() => {
-                previous?Load(previous): alert("Fim!")
-            }}>
-                Previous
-            </button>
-
-            <button onClick={() => {
-                next?Load(next): alert("Fim!")
-            }}>
-                Next
-            </button>
+            <h1 id="top" onClick={() => Load(url)} style={{padding: "0px 20px"}}>Pokédex</h1>
 
             <ol id="pokemon-list">
                 {list.map(pokemon => pokemon)}
             </ol>
+
+            <section className="btn-section">
+                <a href="#top" className="change-page-btn" onClick={() => {
+                    previous?Load(previous): alert("Fim!")
+                }}>
+                    <Image src={arrow_back} alt={"voltar"}></Image> previous
+                </a>
+
+                <a href="#top" className="change-page-btn" onClick={() => {
+                    next?Load(next): alert("Fim!")
+                }}>
+                    next <Image className="flip" src={arrow_back} alt={"avançar"}></Image>
+                </a>
+            </section>
         </>
     )
 }

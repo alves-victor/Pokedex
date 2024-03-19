@@ -1,8 +1,42 @@
 
+.btn-section{
+    position: fixed;
+    width: 100%;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    bottom: 0;
+    z-index: 555;
+    background-color: #555;
+    border-top: 3px solid #000;
+}
+
+.change-page-btn{
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.change-page-btn > img{
+    height: 2.4rem;
+    width: 2.4rem;
+    padding: 5px;
+}
+
+.flip{
+    transform: rotateY(180deg);
+}
+
 #pokemon-list{
     display: grid;
     grid-template-columns: 1fr 1fr;
     user-select: none;
+    padding-bottom: 2.4rem;
 }
 
 .pokemon-card{
