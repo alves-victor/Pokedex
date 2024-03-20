@@ -65,7 +65,7 @@ export default function Details(){
 
     useEffect(() => {
         GetPokemon(`https://pokeapi.co/api/v2/pokemon/${searchParams}/`)
-    })
+    }, [])
 
     return(
         <PokemonDetails class="visible" pokemonInfo={pokemonInfo}/>
