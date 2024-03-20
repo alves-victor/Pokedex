@@ -1,0 +1,60 @@
+
+@media screen and (max-width: 340px){
+    .section{
+        width: 90%;
+    }
+
+    .back-btn{
+        left: 30px
+    }
+
+    .ability{
+        text-align: justify;
+    }
+
+    .stats{
+        grid-template-columns: 1fr;
+    }
+
+    .stat{
+        padding: 5px 0;
+    }
+}
+
+@media screen and (max-width: 360px){
+    .poke-img{
+        height: 10rem;
+        width: 10rem;
+    }
+}
+
+@media screen and (min-width: 540px){
+    .back-btn{
+        left: 14%;
+    }
+}
+
+@media screen and (min-width: 768px){
+    .back-btn{
+        left: 18%;
+    }
+
+    .poke-img{
+        height: 15rem;
+        width: 15rem;
+    }
+
+    .section{
+        width: 70%;
+    }
+}
+
+@media screen and (min-width: 992px){
+    .back-btn{
+        left: 21%;
+    }
+
+    .section{
+        width: 60%;
+    }
+}

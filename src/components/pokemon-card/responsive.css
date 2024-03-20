@@ -1,0 +1,46 @@
+
+@media screen and (max-width: 340px){
+    #pokemon-list{
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (min-width: 768px){
+    #pokemon-list{
+        grid-template-columns: 1fr 1fr 1fr;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    #top{
+        padding: 5px 8%;
+    }
+
+    .btn-section{
+        padding: 0 10%;
+    }
+}
+
+@media screen and (min-width: 992px){
+    #top{
+        padding: 20px 17%;
+    }
+
+    #pokemon-list{
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    .pokemon-card{
+        height: 20rem;
+    }
+
+    .pokemon-img{
+        height: 11rem;
+        width: 11rem;
+    }
+
+    .btn-section{
+        padding: 0 20%;
+    }
+}

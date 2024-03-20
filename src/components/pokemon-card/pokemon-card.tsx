@@ -1,6 +1,7 @@
 "use client"
 
 import "./style.css"
+import "./responsive.css"
 import "../../app/pokeTypes.css"
 import info from "../../../public/info.svg"
 import arrow_back from "../../../public/arrow_back.svg"
@@ -24,7 +25,7 @@ export class Pokemon{
 
 export default function PokemonCard(){
 
-    const url = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=8"
+    const url = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=12"
     const [list, setList] = useState(Array<any>)
     const [next, setNext] = useState("")
     const [previous, setPrevious] = useState("")
@@ -111,7 +112,7 @@ export default function PokemonCard(){
 
     return(
         <>
-            <h1 id="top" onClick={() => Load(url)} style={{padding: "0px 20px"}}>Pokédex</h1>
+            <h1 id="top" onClick={() => Load(url)}>Pokédex</h1>
 
             <ol id="pokemon-list">
                 {list.map(pokemon => pokemon)}

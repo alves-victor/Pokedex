@@ -1,4 +1,5 @@
 import "./style.css"
+import "./responsive.css"
 import Image from "next/image"
 import arrow_back from "../../../public/arrow_back.svg"
 import Link from "next/link"
