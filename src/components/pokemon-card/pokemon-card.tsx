@@ -71,7 +71,7 @@ export default function PokemonCard(){
                     <p className="pokemon-number">#{pokemon.id}</p>
                 </section>
                 <section className="mid-section">
-                    <Image className="pokemon-img" src={pokemon.sprite} alt="Pokemon-img" />
+                    <img className="pokemon-img" src={pokemon.sprite} alt="Pokemon-img" />
                     <Link 
                         href={{
                             pathname: "/details",
@@ -100,7 +100,7 @@ export default function PokemonCard(){
         window.onbeforeunload = function(){
             localStorage.clear()
         }
-    }, [])
+    })
     
     async function Load(url: any){
         localStorage.setItem("url-atual", url)

@@ -7,7 +7,7 @@ import { useSearchParams } from "next/navigation"
 
 export default function Details(){
     const [pokemonInfo, setPokemonInfo] = useState(new Pokemon)
-    const searchParams: any = useSearchParams().get("id")
+    const searchParams: any = useSearchParams()
 
     async function GetPokemon(url: string){
         const pokemon: Pokemon = new Pokemon()
@@ -64,8 +64,8 @@ export default function Details(){
     }
 
     useEffect(() => {
-        GetPokemon(`https://pokeapi.co/api/v2/pokemon/${searchParams}/`)
-    }, [])
+        GetPokemon(`https://pokeapi.co/api/v2/pokemon/${searchParams.get("id")}/`)
+    })
 
     return(
         <PokemonDetails class="visible" pokemonInfo={pokemonInfo}/>
