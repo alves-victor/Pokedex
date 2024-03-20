@@ -71,7 +71,7 @@ export default function PokemonCard(){
                     <p className="pokemon-number">#{pokemon.id}</p>
                 </section>
                 <section className="mid-section">
-                    <img className="pokemon-img" src={pokemon.sprite} alt="Pokemon-img" />
+                    <Image className="pokemon-img" src={pokemon.sprite} alt="Pokemon-img" />
                     <Link 
                         href={{
                             pathname: "/details",

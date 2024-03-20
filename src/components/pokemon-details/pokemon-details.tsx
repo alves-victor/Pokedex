@@ -14,7 +14,7 @@ export default function PokemonDetails(props: any){
                     <Link href="/">
                         <Image className={"back-btn " + props.pokemonInfo.types[0]} src={arrow_back} alt="back button"></Image>
                     </Link>
-                    <img className={"poke-img " + props.pokemonInfo.types[0] + "-filter"} src={props.pokemonInfo.sprite} alt="pokemon picture" />
+                    <Image className={"poke-img " + props.pokemonInfo.types[0] + "-filter"} src={props.pokemonInfo.sprite} alt="pokemon picture" />
                     <section className="name-section section-padding">
                         <span>{props.pokemonInfo.name}</span>
                         <span>#{props.pokemonInfo.id}</span>
