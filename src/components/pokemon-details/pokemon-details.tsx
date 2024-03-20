@@ -1,3 +1,5 @@
+"use client"
+
 import "./style.css"
 import "./responsive.css"
 import Image from "next/image"
