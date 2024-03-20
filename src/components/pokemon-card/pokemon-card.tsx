@@ -96,6 +96,10 @@ export default function PokemonCard(){
         }else{
             Load(url)
         }
+
+        window.onbeforeunload = function(){
+            localStorage.clear()
+        }
     }, [])
     
     async function Load(url: any){
@@ -104,10 +108,6 @@ export default function PokemonCard(){
             let li = pokemons.map(ConvertPokemonToLi)
             setList(li)
         })
-    }
-
-    window.onbeforeunload = function(){
-        localStorage.clear()
     }
 
     return(
