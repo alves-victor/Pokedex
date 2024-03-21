@@ -1,12 +1,10 @@
-"use client"
-
 import "./style.css"
 import "./responsive.css"
 import Image from "next/image"
 import arrow_back from "../../../public/arrow_back.svg"
 import Link from "next/link"
-import { Pokemon } from "@/components/pokemon-card/pokemon-card"
 import { useEffect, useState } from "react"
+import { Pokemon } from "../pokemon-card/pokemon-card"
 
 export default function PokemonDetails(props: any){
     const [pokemonInfo, setPokemonInfo] = useState(new Pokemon)
@@ -66,18 +64,18 @@ export default function PokemonDetails(props: any){
         })
     }
 
-    useEffect(() => {
-        GetPokemon(`https://pokeapi.co/api/v2/pokemon/${props.params}/`)
-    })
+    useEffect(() => {        
+        GetPokemon(`https://pokeapi.co/api/v2/pokemon/${props.params}/`)        
+    }, [])
 
     return(
         <div className="container">
             <main className="main">
                 <section className={"section " + pokemonInfo.types[0] + "-box-shadow"}>
                     <Link href="/">
-                        <Image className={"back-btn " + pokemonInfo.types[0]} src={arrow_back} alt="back button"></Image>
+                        <Image className={"back-btn " + pokemonInfo.types[0]} src={arrow_back} alt="back button"/>
                     </Link>
-                    <img className={"poke-img " + pokemonInfo.types[0] + "-filter"} src={pokemonInfo.sprite} alt="pokemon picture" />
+                    <img className={"poke-img " + pokemonInfo.types[0] + "-filter"} src={pokemonInfo.sprite} alt="pokemon picture"/>
                     <section className="name-section section-padding">
                         <span>{pokemonInfo.name}</span>
                         <span>#{pokemonInfo.id}</span>
