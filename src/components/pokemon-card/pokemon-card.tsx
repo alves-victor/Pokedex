@@ -71,14 +71,14 @@ export default function PokemonCard(){
                     <p className="pokemon-number">#{pokemon.id}</p>
                 </section>
                 <section className="mid-section">
-                    <img className="pokemon-img" src={pokemon.sprite} alt="Pokemon-img" />
+                    <Image className="pokemon-img" src={pokemon.sprite} alt="Pokemon-img" width={0} height={0}/>
                     <Link 
                         href={{
                             pathname: "/details",
-                            query: {id: pokemon.id}                     
+                            query: {id: pokemon.id},                                               
                         }}
                     >
-                        <Image className="infoIcon" src={info} alt="details button"></Image>
+                        <Image className="infoIcon" src={info} alt="details button"/>
                     </Link>
                 </section>
                 <section className="bot-section">
@@ -100,7 +100,7 @@ export default function PokemonCard(){
         window.onbeforeunload = function(){
             localStorage.clear()
         }
-    })
+    }, [])
     
     async function Load(url: any){
         localStorage.setItem("url-atual", url)
