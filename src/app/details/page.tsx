@@ -8,13 +8,13 @@ function Params(){
     const searchParams: any = useSearchParams()
     const params = searchParams.get("id")
 
-    return <PokemonDetails class="visible" params={params}/>
+    return <PokemonDetails params={params}/>
 }
 
-export default function Details(){
+export default function Details(){    
 
     return(
-        <Suspense fallback={<p>loading...</p>}>
+        <Suspense>
             <Params/>
         </Suspense>
     )
