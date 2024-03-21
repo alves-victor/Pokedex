@@ -144,5 +144,6 @@ html, body{
 }
 
 .stat{
+    padding: 8px 0;
     text-transform: capitalize;
 }
