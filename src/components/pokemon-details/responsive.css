@@ -15,10 +15,6 @@
     .stats{
         grid-template-columns: 1fr;
     }
-
-    .stat{
-        padding: 5px 0;
-    }
 }
 
 @media screen and (max-width: 360px){
@@ -56,5 +52,15 @@
 
     .section{
         width: 60%;
+    }
+
+    .description{
+        padding-left: 7rem;
+        padding-right: 7rem;
+    }
+
+    .ability{
+        padding-left: 6rem;
+        padding-right: 6rem;
     }
 }
