@@ -8,6 +8,7 @@ import arrow_back from "../../../public/arrow_back.svg"
 import Image from "next/image"
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import SearchBar from "../search-pokemon/search-pokemon"
 
 export class Pokemon{
     name: string = "";
@@ -71,7 +72,7 @@ export default function PokemonCard(){
                     <p className="pokemon-number">#{pokemon.id}</p>
                 </section>
                 <section className="mid-section">
-                    <Image className="pokemon-img" src={pokemon.sprite} alt="Pokemon-img" width={0} height={0}/>
+                    <Image priority={true} className="pokemon-img" src={pokemon.sprite} alt="Pokemon-img" width={0} height={0}/>
                     <Link 
                         href={{
                             pathname: "/details",
@@ -113,6 +114,8 @@ export default function PokemonCard(){
     return(
         <>
             <h1 id="top" onClick={() => Load(url)}>Pokédex</h1>
+
+            <SearchBar/>
 
             <ol id="pokemon-list">
                 {list.map(pokemon => pokemon)}
