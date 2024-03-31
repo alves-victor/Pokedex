@@ -55,8 +55,15 @@ export default function PokemonDetails(props: any){
             })
     }
 
-    function GetStats(stats: any[]){
-        return stats.map((stats: any) => {
+    type stats = {
+        stat: {
+            name: string
+        }
+        base_stat: string
+    }
+
+    function GetStats(stats: []){
+        return stats.map((stats: stats) => {
             return {
                 name: stats.stat.name,
                 value: stats.base_stat
